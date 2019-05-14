@@ -8,6 +8,7 @@ import Error from "./page/Error";
 import CrudGallery from "./page/crud_gallery";
 import Form from "./page/crud_gallery/components/FormComponents";
 import Todo from "./page/todo";
+import Contact from "./page/contact/Contact";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/form" component={Form} />
           <Route path={"/form-edit/:id"} component={Form} />
           <Route path="/todo" component={Todo} />
+          <Route path="/contact" component={Contact} />
           <Route component={Error} />
         </Switch>
       </div>
