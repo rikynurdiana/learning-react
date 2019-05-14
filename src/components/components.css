@@ -1,0 +1,34 @@
+.slick-next {
+  right: 30px;
+  z-index: 2;
+}
+
+.slick-prev {
+  left: 30px;
+  z-index: 2;
+}
+
+.animateImage {
+  transition: transform 3s;
+}
+
+.animateImage:hover {
+  transform: scale(2);
+  opacity: 0.5;
+  transition: transform 5s;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  pointer-events: none;
+  margin-left: 20px
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
