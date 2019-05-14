@@ -18,6 +18,15 @@ $ npm install
 $ npm start
 ```
 
+#### ~ Setting JSON Server
+gunakan repo ini untuk petunjuk nya https://github.com/rikynurdiana/react-json
+```sh
+$ npm install -g json-server
+$ git clone git@github.com:rikynurdiana/react-json.git
+$ cd react-json
+$ json-server --watch db.json --port 8000
+```
+
 #### ~ google firebase Config 
 ```sh
 1 . Setting firebase config di 
