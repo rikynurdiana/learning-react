@@ -5,7 +5,7 @@ export default function Error() {
   return (
     <div>
       <Typography color="inherit" >
-        Error
+        <img src="/img/404.png" alt="error page" width="100%" style={{margin: '60px 0 0 0'}}/>
       </Typography>
     </div>
   )
