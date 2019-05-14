@@ -9,6 +9,7 @@ import CrudGallery from "./page/crud_gallery";
 import Form from "./page/crud_gallery/components/FormComponents";
 import Todo from "./page/todo";
 import Contact from "./page/contact/Contact";
+import TiketPesawat from "./page/tiket_pesawat";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path={"/form-edit/:id"} component={Form} />
           <Route path="/todo" component={Todo} />
           <Route path="/contact" component={Contact} />
+          <Route path="/tiket-pesawat" component={TiketPesawat} />
           <Route component={Error} />
         </Switch>
       </div>
