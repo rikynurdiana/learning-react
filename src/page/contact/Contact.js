@@ -26,7 +26,7 @@ class Contact extends React.Component {
         lng: 107.498375
       },
       zoom: 11,
-      key: 'AIzaSyChi-TMhH8j8smeAGUO6hMrUg324n9LFeI'
+      key: ''
     }
   }
 
