@@ -39,11 +39,11 @@ class Footer extends React.Component {
             <Typography className={classes.footerText}>
               Follow Me
             </Typography>
-            <img src="/icons/instagram.png" alt="instagram" width="50px" />
-            <img src="/icons/facebook.png" alt="facebook" width="50px" />
-            <img src="/icons/linkedin.png" alt="linkedin" width="50px" />
-            <img src="/icons/youtube.png" alt="youtube" width="50px" />
-            <img src="/icons/twitter.png" alt="twitter" width="50px" />
+            <img src="/img/icons/instagram.png" alt="instagram" width="50px" />
+            <img src="/img/icons/facebook.png" alt="facebook" width="50px" />
+            <img src="/img/icons/linkedin.png" alt="linkedin" width="50px" />
+            <img src="/img/icons/youtube.png" alt="youtube" width="50px" />
+            <img src="/img/icons/twitter.png" alt="twitter" width="50px" />
             <Typography className={classes.emailtext}>
               Email Business : nurdiana.riky@gmail.com
             </Typography>
