@@ -1,6 +1,5 @@
 import axios from "axios";
-// axios.defaults.baseURL = "http://localhost:8000";
-axios.defaults.baseURL = "http://jsonserver.riky.xyz:3000/";
+axios.defaults.baseURL = process.env.REACT_APP_APIURL
 
 export default {
   async requestApi(url, data, method) {
