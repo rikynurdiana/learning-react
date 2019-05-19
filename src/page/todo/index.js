@@ -1,110 +1,153 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
 import { withStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import FormTodo from './components/FormTodo';
-import ListTodo from './components/ListTodo';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import WrapperContainer from 'components/Container'
+import BtnSubmit from 'components/button/BtnSubmit';
+import Table from 'components/table'
+import Thead from 'components/table/TableHeader'
+import Tbody from './components/TableData';
+import uuid from 'uuid';
 
-class Todo extends React.Component {
+import api from 'api/Api';
+import methods from 'api/Methods';
+import endpoint from 'api/Endpoint';
+import notification from 'components/Notification';
+
+class index extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       pageTitle: 'Todo List',
-      listData: []
+      isLoading: true,
+      title: '',
+      items: []
     }
   }
 
-  inputListData = (todo) => {
-    let newInput = {
-      id: this.state.listData.length + 1,
-      name: todo,
-      completed: false
-    }
-    let newList = this.state.listData.concat(newInput)
-    this.setState({ listData: newList })
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
   }
 
-  updateListdata = (id) => {
-    const newData = this.state.listData.map(e => {
-      if (e.id === id) {
-        e = { ...e, completed: true };
+  handleDelete = async (id) => {
+    this.setState({ isLoading: true })
+    let delData = await api.requestApi(`${endpoint.todo}/${id}`, null, methods.delete)
+    delData.status === 200 ?
+    this.getListData() && this.setState({ isLoading: false }) :
+    notification('Error', 'Data Failed To Done', 'error').then((result) => {
+      this.setState({ isLoading: false })
+    })
+  }
+
+  handleDone = async (id) => {
+    this.setState({ isLoading: true })
+    let reqData = await api.requestApi(`${endpoint.todo}/${id}`, null, methods.get)
+    if (reqData.status === 200) {
+      let data = {
+        title: reqData.data.title,
+        status: 'completed',
       }
-      return e;
-    });
-    this.setState({ listData: newData })
+      let updateData = await api.requestApi(`${endpoint.todo}/${id}`, data, methods.put)
+      updateData.status === 200 ?
+      this.getListData() && this.setState({ isLoading: false }) :
+      notification('Error', 'Data Failed To Proccess', 'error')
+    } else {
+      notification('Error', 'Data Failed To Done', 'error').then((result) => {
+        this.setState({ isLoading: false })
+      })
+    }
   }
 
-  deleteListData = (id) => {
-    let newData = this.state.listData.filter(x => x.id !== id);
-    this.setState({ listData: newData })
+  handleSubmit = async (event) => {
+    this.setState({ isLoading: true })
+    event.preventDefault();
+    let data = {
+      id: uuid(),
+      title: this.state.title,
+      status: ''
+    }
+    let postData = await api.requestApi(endpoint.todo, data, methods.post)
+    postData.status === 201 ?
+    this.getListData() && this.setState({ isLoading: false, title: '' }) : 
+    notification('Error', 'Data Failed To Done', 'error').then((result) => {
+      this.setState({ isLoading: false, title: '' })
+    })
+  }
+
+  getListData = async () => {
+    let reqData = await api.requestApi(endpoint.todo, null, methods.get)
+    reqData.status === 200 ?
+    this.setState({ items: reqData.data, isLoading: false }) :
+    notification('Error', 'There is an error on request data', 'error')
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+    this.getListData();
   }
 
   render() {
-    window.scrollTo(0, 0)
-    const { classes } = this.props;
-
+    const { classes } = this.props
     return (
-      <div className={classes.layout}>
-        <CssBaseline />
-        <Typography className={classes.title}>
-          {this.state.pageTitle}
-        </Typography>
-        <div className={classes.root}>
-          <Grid container spacing={24}>
-            <Grid item lg={4}>
-              <Paper className={classes.paper}>
-                <FormTodo
-                  triggerParentInput={this.inputListData.bind(this)} 
-                />
-              </Paper>
-            </Grid>
-            <Grid item lg={8}>
-              <Paper className={classes.paper}>
-                <ListTodo
-                  listData={this.state.listData}
-                  triggerParentDelete={this.deleteListData} 
-                  triggerParentUpdate={this.updateListdata}
-                />
-              </Paper>
-            </Grid>
-          </Grid>
-        </div>
-      </div>
-    );
+      <WrapperContainer title={this.state.pageTitle}>
+        <ValidatorForm ref="form" onSubmit={this.handleSubmit}>
+          <TextValidator
+            label="Title"
+            name="title"
+            type="text"
+            className={classes.textField}
+            value={this.state.title}
+            onChange={this.handleChange}
+            validators={['required']}
+            errorMessages={['this field is required']} />
+          <BtnSubmit handleCreate={this.handleCreate} />
+        </ValidatorForm> <br/>
+        {this.state.isLoading === true && <LinearProgress style={{margin: '5px 0 5px 0'}} />}
+        <Table>
+          <Thead items={itemHeader} />
+          <Tbody
+            items={this.state.items}
+            handleDelete={this.handleDelete}
+            handleDone={this.handleDone} />
+        </Table>
+      </WrapperContainer>
+    )
   }
 }
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
+const itemHeader = [
+  {
+    id: 1,
+    text: 'No',
+    align: 'center',
+    style: { width: '50px' }
   },
-  paper: {
-    padding: theme.spacing.unit * 2,
+  {
+    id: 2,
+    text: 'Title',
+    align: 'left',
+    style: {}
   },
-  layout: {
-    width: 'auto',
-    marginTop: '80px',
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-      width: 1100,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
+  {
+    id: 3,
+    text: 'Status',
+    align: 'left',
+    style: {}
   },
-  title: {
-    fontSize: '24px',
-    fontWeight: 'bold',
-    color: '#a7a4a4',
-    margin: '10px 0 10px 0'
-  },
+  {
+    id: 4,
+    text: 'Action',
+    align: 'center',
+    style: {}
+  }
+]
+
+const styles = () => ({
+  textField: {
+    width: '200px',
+    margin: '-11px 20px 20px 0',
+    float: 'left'
+  }
 })
 
-Todo.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(Todo);
+export default withStyles(styles)(index)

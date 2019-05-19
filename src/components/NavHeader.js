@@ -102,7 +102,7 @@ class NavHeader extends React.Component {
 
             <div style={this.state.logoutButton === true ? { display: 'block' } : { display: 'none' }}>
               <GoogleLogout
-                clientId=""
+                clientId="265968810123-k7il5q891vs1u2n3rp9susipi8b9g1j2.apps.googleusercontent.com"
                 buttonText="Logout"
                 onLogoutSuccess={this.logout}
               />
@@ -110,7 +110,7 @@ class NavHeader extends React.Component {
 
             <div style={this.state.loginButton === true ? {display:'block'} : {display:'none'}}>
               <GoogleLogin
-                clientId=""
+                clientId="265968810123-k7il5q891vs1u2n3rp9susipi8b9g1j2.apps.googleusercontent.com"
                 buttonText="Login"
                 onSuccess={this.responseGoogle}
                 onFailure={this.responseGoogle}

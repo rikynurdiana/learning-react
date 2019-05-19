@@ -26,7 +26,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div style={{ marginTop: '65px', }}>
+      <div>
         <BigSlider />
         {this.state.isLoading === true ? <LinearProgress style={{ margin: '0 0 0 0' }} /> : ''}
         <ShowCase listData={this.state.listData} />
