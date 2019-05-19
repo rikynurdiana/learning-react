@@ -26,7 +26,7 @@ class Contact extends React.Component {
         lng: 107.498375
       },
       zoom: 11,
-      key: ''
+      key: process.env.REACT_APP_MAPSID
     }
   }
 
