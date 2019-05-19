@@ -36,16 +36,16 @@ class ListMenu extends React.Component {
         },
         {
           id: 5,
-          name: 'CRUD Gallery',
+          name: 'CRUD Biodata',
           icon: 'view_quilt',
-          url: '/crud-gallery',
+          url: '/crud-biodata',
           public: false
         },
         {
           id: 6,
-          name: 'CRUD Biodata',
+          name: 'CRUD Gallery',
           icon: 'view_quilt',
-          url: '/crud-biodata',
+          url: '/crud-gallery',
           public: false
         },
         {
