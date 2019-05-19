@@ -15,29 +15,29 @@ export default class Index extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      pageTitle: 'Gallery',
+      pageTitle: 'Biodata',
       isLoading: true,
       items: []
     }
   }
 
   handleCreate = () => {
-    this.props.history.push('/form-create-crud-gallery')
+    this.props.history.push('/form-create-crud-biodata')
   }
 
   handleEdit = (id) => {
-    this.props.history.push(`/form-edit-crud-gallery/${id}`)
+    this.props.history.push(`/form-edit-crud-biodata/${id}`)
   }
 
   handleDelete = async (id) => {
-    let delData = await api.requestApi(`${endpoint.gallery}/${id}`, null, methods.delete)
+    let delData = await api.requestApi(`${endpoint.biodata}/${id}`, null, methods.delete)
     delData.status === 200 ?
     notification('Success', 'Selected Data Has Been Remove', 'success').then((result) => {this.getListData()}) :
     notification('Error', 'Failed To Remove Selected Data', 'error')
   }
 
   getListData = async () => {
-    let reqData = await api.requestApi(endpoint.gallery, null, methods.get)
+    let reqData = await api.requestApi(endpoint.biodata, null, methods.get)
     reqData.status === 200 ?
     this.setState({ items: reqData.data, isLoading: false }) :
     notification('Error', 'There is an error on request data', 'error')
@@ -74,36 +74,30 @@ const itemHeader = [
   },
   {
     id: 2,
-    text: 'Image',
+    text: 'Name',
     align: 'left',
     style: {}
   },
   {
     id: 3,
-    text: 'Title',
+    text: 'Gender',
     align: 'left',
     style: {}
   },
   {
     id: 4,
-    text: 'Create By',
+    text: 'Age',
     align: 'left',
     style: {}
   },
   {
     id: 5,
-    text: 'Create Date',
+    text: 'Address',
     align: 'left',
     style: {}
   },
   {
     id: 6,
-    text: 'Status',
-    align: 'center',
-    style: {}
-  },
-  {
-    id: 7,
     text: 'Action',
     align: 'center',
     style: {}

@@ -168,7 +168,6 @@ const styles = theme => ({
   },
   layout: {
     width: 'auto',
-    marginTop: '80px',
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
     [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
