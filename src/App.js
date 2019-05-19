@@ -10,6 +10,8 @@ import Form from "./page/crud_gallery/components/FormComponents";
 import Todo from "./page/todo";
 import Contact from "./page/contact/Contact";
 import TiketPesawat from "./page/tiket_pesawat";
+import CrudBiodata from "./page/crud_biodata"
+import FormCreateCrudBiodata from "./page/crud_biodata/components/Form"
 
 function App() {
   return (
@@ -28,6 +30,9 @@ function App() {
           <Route path="/todo" component={Todo} />
           <Route path="/contact" component={Contact} />
           <Route path="/tiket-pesawat" component={TiketPesawat} />
+          <Route path="/crud-biodata" component={CrudBiodata} />
+          <Route path="/form-create-crud-biodata" component={FormCreateCrudBiodata} />
+          <Route path="/form-edit-crud-biodata/:id" component={FormCreateCrudBiodata} />
           <Route component={Error} />
         </Switch>
       </div>

@@ -18,13 +18,6 @@ class ListMenu extends React.Component {
           url: '',
           public: true
         },
-        // {
-        //   id: 2,
-        //   name: 'About',
-        //   icon: 'person',
-        //   url: '/about',
-        //   public: true
-        // },
         {
           id: 3,
           name: 'Contact',
@@ -32,13 +25,6 @@ class ListMenu extends React.Component {
           url: '/contact',
           public: true
         },
-        // {
-        //   id: 4,
-        //   name: 'Sample Container',
-        //   icon: 'contact_mail',
-        //   url: '/sample-container',
-        //   public: true
-        // },
       ],
       menuPrivate: [
         {
@@ -57,11 +43,19 @@ class ListMenu extends React.Component {
         },
         {
           id: 6,
+          name: 'CRUD Biodata',
+          icon: 'view_quilt',
+          url: '/crud-biodata',
+          public: false
+        },
+        {
+          id: 7,
           name: 'Tiket Pesawat',
           icon: 'view_quilt',
           url: '/tiket-pesawat',
           public: false
         },
+        
       ],
       public: false,
     }

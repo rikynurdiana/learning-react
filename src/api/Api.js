@@ -1,5 +1,6 @@
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:8000";
+// axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = "http://jsonserver.riky.xyz:3000/";
 
 export default {
   async requestApi(url, data, method) {
