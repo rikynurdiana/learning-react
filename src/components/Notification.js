@@ -2,7 +2,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 const MySwal = withReactContent(Swal)
 
-const notification = async (title, text, type, callFunction) => {
+const notification = async (title, text, type) => {
   return(
     await MySwal.fire({
       title: title,

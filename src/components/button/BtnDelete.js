@@ -11,7 +11,7 @@ const BtnCancel = (props) => {
       color="secondary"
       className={classes.button}
       onClick={handleDelete}>
-      <Icon style={classes.iconStyle}>delete</Icon>
+      <Icon >delete</Icon>
     </Button>
   )
 }

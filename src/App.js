@@ -5,7 +5,6 @@ import NavHeader from './components/NavHeader';
 import Footer from './components/Footer';
 import Error from "./page/Error";
 
-
 import Todo from "./page/todo";
 import Contact from "./page/contact/Contact";
 import TiketPesawat from "./page/tiket_pesawat";
