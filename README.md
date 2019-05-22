@@ -2,12 +2,15 @@
 
 ### ~ Repo ini berisi
 ```sh
-1 . CRUD Image Gallery (JSON Server API + Firebase untuk upload gambar).
-2 . Sistem pemesanan tiket pesawat sederahana
-3 . Todo List
-4 . Contact us page dengan google maps
-5 . Login with google
-6 .... modul lainnya akan bertambah (in development)
+1 . CRUD BIODATA (JSON Server API)
+2 . CRUD Image Gallery (JSON Server API + Firebase untuk upload gambar)
+3 . Sistem pemesanan tiket pesawat sederahana
+4 . Todo List (JSON Server API)
+5 . Contact us page dengan google maps
+6 . Login with google
+7 . Penggunaan Context API pada setiap modul CRUD
+8 . Coding yang sederhana
+9 .... modul lainnya akan bertambah (in development)
 ```
 
 #### ~ Cara memulai apps
